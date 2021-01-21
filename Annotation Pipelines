@@ -1,0 +1,28 @@
+This describes the **process** of 5 different **annotation pipelines** : **Prokka**, **MaGe**, **DFAST**, **RAST** and **IMG**
+
+# 1. Annotation with Prokka (rapid prokaryotic genome annotation)
+load right conda environment with the latest version of Prokka
+
+    source $CONDA3/activate prokka-1.13.4
+    mkdir filename
+    prokka --addgenes -outdir assemblygenome.fasta
+
+# 2. Annotation with MaGe (Magnifying Genomes)
+First you need to create an agp file with the perl script fa2agp2.pl (https://www.hmpdacc.org/hmp/doc/fasta2apg.pl)
+
+Then, you **annotate** your organism/bacterial **16s RNA sequences** through **RDP classifier** which is the **taxonomic identifier** linked with the **NCBI Taxonomy Browser**.
+
+Finally, you need to fill the different field of the **submission** with the information you retrieved and upload the **agp and fasta files** you obtained with the execution of fa2agp.
+
+# 3. Annotation with DFAST (a flexible prokaryotic genome annotation pipeline for faster genome publication)
+You just need to put the assemblygenome.fasta file and give your email adress to receive the results.
+
+# 4. Annotation with RAST (Rapid Annotation using Subsystem Technology)
+You need to retrieve your **taxonomic identification** like with MaGe. 
+Then, you give the proper file (assemblygenome.fasta) for submission.
+After this step, you can choose between an old version and the recent one. In our study case, we used the recent one and it worked well.
+
+# 5. Annotation with IMG (Integrated Microbial Genomes and Microbiomes)
+To annotate with IMG you will need to create a new **Study in GOLD** (https://gold.jgi.doe.gov/project_submission) 
+Then, **for each bacterial genome** you will be asked to create a **Sequencing Project** AND an **Analysis Project**.
+You can Email to coresponding people on the platform to provide you a ready excel sheet to be filled which makes your task easier. 
