@@ -1,0 +1,40 @@
+how to compare the metabolic network of a host (here an alga)
+
+# 1. Alignment of the metabolic networks
+
+First, make sure that you installed **python 3.6**. Then you will be able to **install miscoto** :
+
+    pip3 install pyasp (or pip3 install pyasp --no-cache-dir)
+    pip3 install miscoto
+
+After, the different miscoto command line can be run :
+
+## 1.1 the command which allows you to extract new producible compounds 
+
+    miscoto_scopes -m host.sbml -b output_folder/sbml/ -s seeds.xml -t targets.xml
+
+Seeds = set of starting compounds
+
+Targets = set of targeted compounds
+
+## 1.2 the command which gives optimal solution
+
+    miscoto_mincom -m host.sbml -b output_folder/sbml/ -s seeds.xml -t targets.xml -o soup
+
+Here the tagets correspond to the compounds found with the miscoto_scopes command. 
+you should see the selected bacteria in this step with their IDs/names
+
+## 1.3 the command which Displays all the possible solution
+
+    miscoto_mincom -m host.sbml -b output_folder/sbml/ -s seeds.xml -t targets.xml -o soup --enumeration
+
+## 1.4 the command which indicates organisms shared by all the solutions
+
+    miscoto_mincom -m host.sbml -b output_folder/sbml/ -s seeds.xml -t targets.xml -o soup --intersection
+
+## 1.5 the command which points out a fusion of all the solutions (all the bacteria that participate to at least one solution)
+
+    miscoto_mincom -m host.sbml -b output_folder/sbml/ -s seeds.xml -t targets.xml -o soup --union
+
+
+For more details and information check out the link  https://github.com/cfrioux/miscoto
