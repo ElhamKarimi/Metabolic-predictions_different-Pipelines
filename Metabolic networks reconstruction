@@ -1,0 +1,30 @@
+This script explains how to reconstruct metabolic networks of bacterial genomes from gbk files.
+
+# 1. Make sure the gbk files are fine
+
+The gbk files need to contain a line **/db_xref="taxon:..."**, Otherwise the Pathway Tools command line is not going to work.
+Also, the folder you give to the Pathway Tools command needs to contain **one folder for each gbk file**. The gbk **file and its folder** need to have the **same name** and this name needs to contain **at least 1 letter**.
+If the command doesn't work when you launch all presented genomes at the same time, redo the command for less genomes (like 10 or 20).
+
+## 1.1 Creation of gbk file for IMG
+
+You are going to need the script on this link : https://github.com/ArnaudBelcour/gff_to_gbk/blob/img/gff_to_gbk.py
+You need to download 3 files for each genome you annotate : **contigs.fna**, **functional_annotation.gff** and **proteins.faa**.
+You also need to consider your **organism's name**.
+Then, you can launch the command :
+
+    python3 gbk_creator_from_gff.py -fg _contigs.fna -fp _proteins.faa -g _functional_annotation.gff -s organism's name -o your_output
+
+# 2. Metabolic network reconstruction
+
+First, you need to run **Pathway Tools (version 23.0)** on your genomes :
+
+    mpwt -f genomes' folder -o /output_folder/newpgdb/ -v --patho --dat --md
+
+Then, you need to **create a padmet file** from your newpgdb folder :
+
+    for dir in /output_folder/newpgdb/* ; do python3 pgdb_to_padmet.py --output=/output_folder/padmet/$(basename $dir).padmet --directory=$dir -v -g --version=22.5 db=METACYC --padmetRef=metacyc_22.6.padmet ; done
+
+Finally, you can **generate sbml files** from your new padmet files (you need to do this command for each genome):
+
+    python3 sbmlGenerator.py --padmet=/output_folder/padmet/genome.padmet --output=/output_folder/sbml/genome.sbml --sbml_lvl=2 -v
