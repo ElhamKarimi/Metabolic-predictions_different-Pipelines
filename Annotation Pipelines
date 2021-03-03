@@ -3,7 +3,7 @@ This describes the **process** of 5 different **annotation pipelines** : **Prokk
 # 1. Annotation with Prokka (rapid prokaryotic genome annotation)
 load right conda environment with the latest version of Prokka
 
-    source $CONDA3/activate prokka-1.13.4
+    source $CONDA3/activate prokka-1.13
     mkdir filename
     prokka --addgenes -outdir assemblygenome.fasta
 
