@@ -2,7 +2,7 @@
 
 Files emplacement
 
-GBK, SBML,Scopes files generated from this study and scripts here also input medium (target) file can be found at this address https://zenodo.org/record/4436003#.YAqSiC2ZOBs with DOI: 10.5281/zenodo.4436003.
+GBK, SBML,Scopes files generated from this study and scripts here also input medium (target) file can be found at this address https://zenodo.org/record/4656102#.YGXO5y1h2Bs with DOI: 10.5281/zenodo.4436003.
 
 * All these scripts have been written and drafted first by Enora Geslain. Please also visit this link here https://gitlab.com/Enorya/bacterial_genomes/-/tree/master
 
